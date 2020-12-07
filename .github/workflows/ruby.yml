@@ -42,3 +42,6 @@ jobs:
 
       - name: migrate db
         run: docker-compose run api rake db:migrate
+
+      - name: test api
+        run: docker-compose run api bundle exec rails test
