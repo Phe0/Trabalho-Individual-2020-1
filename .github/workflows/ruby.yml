@@ -15,7 +15,7 @@ on:
 
 jobs:
   client:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -28,3 +28,17 @@ jobs:
       - name: test client
         run: |
           docker run gces-vue yarn run test:unit
+
+  api:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: build api
+        run: docker-compose up --no-start api
+
+      - name: create db
+        run: docker-compose run api rake db:create
+
+      - name: migrate db
+        run: docker-compose run api rake db:migrate
