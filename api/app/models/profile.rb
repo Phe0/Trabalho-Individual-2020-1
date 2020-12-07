@@ -40,8 +40,8 @@ class Profile < ApplicationRecord
       url = ShortURL.shorten(url, :tinyurl)
     elsif url.match(regex_short_urls)
       # avoid shrinking again on update if url isn't changed
-    else
-      url = ''  # force validation error
+    # else
+    #   url = ''  # force validation error
     end
 
     return url
