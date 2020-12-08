@@ -36,3 +36,15 @@ Caso o banco precise de migração rode o seguinte comando:
 ```bash
 docker-compose run api rake db:migrate
 ```
+
+# Integração Contínua
+
+Foras utilizadas as ferramentas:
+ - Github actions
+ - SonarCloud
+
+Afim de de realizar a integração contínua do projeto. O CI é responsável por realizar dois jobs, um para o client e outro para a api. Em cada um deles, são realizadas três etapas: build, teste, coleta de métricas.
+
+Para a etapa de build é realizado o build do container docker.
+Para a etapa de testes é realizado o comando de testes dentro do container.
+Para a etapa de coleta de métricas é enviado um aviso para que o SonarCloud colete as métricas do projeto, ficando disponíveis [aqui](https://sonarcloud.io/dashboard?id=Phe0_Trabalho-Individual-2020-1).
