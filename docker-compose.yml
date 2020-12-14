@@ -6,7 +6,7 @@ services:
     ports:
       - 8080:8080
     volumes:
-      - ./client:/vue-app
+      - node_modules:/vue-app/node_modules
 
   api:
     build: ./api
@@ -21,3 +21,6 @@ services:
     image: postgres
     environment:
       - POSTGRES_PASSWORD=password
+
+volumes:
+  node_modules: 
